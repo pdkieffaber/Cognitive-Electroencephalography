@@ -38,6 +38,13 @@ body {
     #f6f7f2;
 }
 
+.book-home {
+  background:
+    linear-gradient(150deg, rgba(11, 128, 113, 0.14), transparent 30%),
+    linear-gradient(35deg, rgba(214, 149, 42, 0.12), transparent 38%),
+    #f5f6f0;
+}
+
 button,
 input {
   font: inherit;
@@ -83,6 +90,7 @@ input {
   max-width: 820px;
   font-size: clamp(2.4rem, 6vw, 5.4rem);
   line-height: 0.96;
+  overflow-wrap: anywhere;
 }
 
 .intro-lede {
@@ -116,6 +124,131 @@ input {
   border: 1px solid rgba(22, 32, 28, 0.18);
   background: #fffaf1;
   color: var(--ink);
+}
+
+.text-link {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 18px;
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 820;
+  text-decoration: none;
+}
+
+.text-link:hover,
+.chapter-card:hover h3 {
+  text-decoration: underline;
+}
+
+.book-hero {
+  display: grid;
+  min-height: 44vh;
+  align-items: end;
+  padding: clamp(36px, 8vw, 92px) 24px clamp(32px, 6vw, 64px);
+  border-bottom: 1px solid rgba(31, 45, 39, 0.12);
+}
+
+.book-hero-inner,
+.book-main {
+  width: min(1120px, calc(100vw - 48px));
+  margin: 0 auto;
+}
+
+.book-title {
+  max-width: 920px;
+  font-size: clamp(2.7rem, 7vw, 6.4rem);
+  line-height: 0.94;
+  overflow-wrap: anywhere;
+}
+
+.book-lede {
+  max-width: 760px;
+  margin: 22px 0 0;
+  color: #334942;
+  font-size: clamp(1.08rem, 2vw, 1.38rem);
+  line-height: 1.5;
+}
+
+.book-main {
+  display: grid;
+  gap: clamp(34px, 6vw, 72px);
+  padding: clamp(32px, 6vw, 72px) 0 80px;
+}
+
+.book-section {
+  display: grid;
+  gap: 18px;
+}
+
+.book-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.82fr);
+  align-items: center;
+  gap: clamp(28px, 5vw, 64px);
+}
+
+.book-section h2 {
+  margin: 0;
+  max-width: 740px;
+  font-size: clamp(1.8rem, 3.2vw, 3rem);
+  line-height: 1.03;
+}
+
+.book-section p {
+  max-width: 760px;
+  margin: 0;
+  color: #3c514b;
+  line-height: 1.62;
+}
+
+.book-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.chapter-list {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.chapter-card {
+  display: grid;
+  align-content: start;
+  min-height: 210px;
+  gap: 10px;
+  border: 1px solid rgba(31, 45, 39, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 252, 244, 0.7);
+  padding: 18px;
+  color: inherit;
+  text-decoration: none;
+  box-shadow: 0 14px 34px rgba(33, 30, 22, 0.08);
+}
+
+.chapter-card.is-available {
+  background: rgba(255, 252, 244, 0.88);
+  border-color: rgba(11, 128, 113, 0.28);
+}
+
+.chapter-card span {
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 850;
+}
+
+.chapter-card h3 {
+  margin: 0;
+  font-size: 1.06rem;
+  line-height: 1.16;
+}
+
+.chapter-card p {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
 }
 
 .intro-main {
@@ -668,8 +801,14 @@ h2 {
     padding-top: 42px;
   }
 
+  .book-hero {
+    min-height: auto;
+    padding-top: 42px;
+  }
+
   .intro-grid,
-  .intro-grid.reverse {
+  .intro-grid.reverse,
+  .book-grid {
     grid-template-columns: 1fr;
   }
 
@@ -682,15 +821,22 @@ h2 {
   .concept-steps {
     grid-template-columns: 1fr;
   }
+
+  .chapter-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 520px) {
   .intro-hero-inner,
-  .intro-main {
+  .intro-main,
+  .book-hero-inner,
+  .book-main {
     width: calc(100vw - 32px);
   }
 
-  .intro-hero {
+  .intro-hero,
+  .book-hero {
     padding-left: 16px;
     padding-right: 16px;
   }
@@ -699,8 +845,20 @@ h2 {
     font-size: 2.18rem;
   }
 
+  .book-title {
+    font-size: 2.42rem;
+  }
+
   .primary-link,
   .secondary-link {
     width: 100%;
+  }
+
+  .chapter-list {
+    grid-template-columns: 1fr;
+  }
+
+  .book-actions {
+    flex-direction: column;
   }
 }

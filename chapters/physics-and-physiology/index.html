@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Physics and Physiology | Cognitive EEG</title>
+    <link rel="stylesheet" href="../../styles.css">
+  </head>
+  <body class="intro-body">
+    <header class="intro-hero">
+      <div class="intro-hero-inner">
+        <a class="text-link" href="../../index.html">Cognitive Electroencephalography</a>
+        <p class="eyebrow">Chapter 1</p>
+        <h1 class="intro-title">Physics and Physiology</h1>
+        <p class="intro-lede">
+          EEG does not record neurons directly. It records tiny voltage differences at the scalp after electrical fields from synchronized brain activity spread through the head.
+        </p>
+        <a class="primary-link" href="./demo.html">Open the Dipole Field Sphere demo</a>
+      </div>
+    </header>
+
+    <main class="intro-main">
+      <section class="intro-section intro-grid" aria-label="Volume conduction overview">
+        <div>
+          <p class="eyebrow">Core idea</p>
+          <h2>What is volume conduction?</h2>
+          <p>
+            Volume conduction is the passive spread of electrical current through conductive tissue. In EEG, the source is usually modeled as a dipole: one side is relatively positive and the other side is relatively negative.
+          </p>
+          <p>
+            As the field travels through brain tissue, cerebrospinal fluid, skull, and scalp, it becomes broader and weaker. By the time it reaches electrodes, one neural source can affect many sensors at once.
+          </p>
+        </div>
+        <figure class="intro-preview">
+          <img src="../../artifacts/dipole-restored-sphere-desktop.jpg" alt="Screenshot of the Dipole Field Sphere demo showing scalp electrodes and a topomap">
+          <figcaption>In the demo, red and blue regions show opposite voltage polarities spreading from a dipole source to the surface.</figcaption>
+        </figure>
+      </section>
+
+      <section class="intro-section">
+        <p class="eyebrow">The path</p>
+        <h2>From neurons to an EEG sensor</h2>
+        <div class="concept-steps">
+          <article>
+            <span class="step-number">1</span>
+            <h3>Many neurons align</h3>
+            <p>EEG is most sensitive when many similarly oriented neurons are active together, creating a field strong enough to reach the scalp.</p>
+          </article>
+          <article>
+            <span class="step-number">2</span>
+            <h3>The head blurs the field</h3>
+            <p>Conductive layers spread current outward. The skull resists current more than brain tissue, which makes scalp patterns smoother than the underlying source.</p>
+          </article>
+          <article>
+            <span class="step-number">3</span>
+            <h3>Electrodes measure differences</h3>
+            <p>Each EEG channel is a voltage difference between an electrode and a reference, so changing the reference can change the plotted scalp pattern.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="intro-section intro-grid reverse" aria-label="Why EEG is ambiguous">
+        <div>
+          <p class="eyebrow">Why it matters</p>
+          <h2>Scalp maps are useful, but not literal pictures of the brain</h2>
+          <p>
+            A scalp topomap shows the voltage pattern measured across electrodes. It is a surface summary of the field, not a direct map of where activity began inside the brain.
+          </p>
+          <p>
+            Different internal source arrangements can produce similar scalp voltages. This is why EEG source localization is an inverse problem: the scalp pattern gives clues, but there is not one unique source solution without extra assumptions.
+          </p>
+        </div>
+        <div class="callout-panel">
+          <h3>Try this in the demo</h3>
+          <p>Move the dipole, change its orientation, switch reference modes, and enable many sources. Watch how the same sensors report a broad voltage pattern rather than a pinpoint source.</p>
+          <a class="secondary-link" href="./demo.html">Launch interactive demo</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

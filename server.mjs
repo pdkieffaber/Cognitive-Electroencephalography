@@ -19,7 +19,8 @@ const mimeTypes = new Map([
 
 function filePathForUrl(url) {
   const pathname = decodeURIComponent(new URL(url, 'http://localhost').pathname);
-  const candidate = normalize(join(root, pathname === '/' ? 'index.html' : pathname));
+  const targetPathname = pathname.endsWith('/') ? `${pathname}index.html` : pathname;
+  const candidate = normalize(join(root, targetPathname));
   if (!candidate.startsWith(root)) return null;
   return candidate;
 }
