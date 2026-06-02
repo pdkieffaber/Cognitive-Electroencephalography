@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dipole Field Sphere</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="demo" aria-label="Interactive dipole field sphere demonstration">
+      <div id="scene" class="scene"></div>
+
+      <section class="panel title-panel" aria-label="Demo status">
+        <div>
+          <p class="eyebrow">Volume conduction demo</p>
+          <h1>Dipole Field Sphere</h1>
+        </div>
+        <dl class="readouts">
+          <div>
+            <dt>Depth</dt>
+            <dd id="depthReadout">0.00</dd>
+          </div>
+          <div>
+            <dt>Peak +</dt>
+            <dd id="positiveReadout">0.00</dd>
+          </div>
+          <div>
+            <dt>Peak -</dt>
+            <dd id="negativeReadout">0.00</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="panel map-panel" aria-label="Scalp topomap">
+        <div>
+          <p class="eyebrow">Sensor view</p>
+          <h2>Scalp Topomap</h2>
+        </div>
+        <canvas id="topomapCanvas" width="320" height="320" aria-label="2D scalp voltage topomap"></canvas>
+        <dl class="map-readouts">
+          <div>
+            <dt>Max</dt>
+            <dd id="mapMaxReadout">0.00</dd>
+          </div>
+          <div>
+            <dt>Min</dt>
+            <dd id="mapMinReadout">0.00</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="panel trace-panel" aria-label="Simulated EEG time series">
+        <div>
+          <p class="eyebrow">Signal view</p>
+          <h2>Simulated EEG</h2>
+        </div>
+        <canvas id="traceCanvas" width="460" height="180" aria-label="Simulated EEG traces"></canvas>
+        <div class="trace-legend" aria-label="Trace channel legend">
+          <span><i class="trace-swatch trace-fz"></i>Fz</span>
+          <span><i class="trace-swatch trace-cz"></i>Cz</span>
+          <span><i class="trace-swatch trace-pz"></i>Pz</span>
+        </div>
+      </section>
+
+      <section class="panel control-panel" aria-label="Interactive controls">
+        <div class="segmented" role="group" aria-label="Drag action">
+          <button type="button" class="mode-button is-active" data-mode="move" aria-pressed="true">Move</button>
+          <button type="button" class="mode-button" data-mode="orient" aria-pressed="false">Orient</button>
+          <button type="button" class="mode-button" data-mode="view" aria-pressed="false">View</button>
+        </div>
+
+        <label class="control-row">
+          <span>Field gain <output id="gainReadout">1.15x</output></span>
+          <span class="range-stepper">
+            <button type="button" class="step-button" data-gain-step="-0.15" aria-label="Decrease field gain">-</button>
+            <input id="gainInput" type="range" min="0.55" max="2.2" step="0.05" value="1.15">
+            <button type="button" class="step-button" data-gain-step="0.15" aria-label="Increase field gain">+</button>
+          </span>
+        </label>
+
+        <label class="control-row">
+          <span>Shell opacity</span>
+          <input id="opacityInput" type="range" min="0.28" max="0.78" step="0.02" value="0.56">
+        </label>
+
+        <div class="control-block span-all">
+          <span class="control-label">Reference</span>
+          <div class="segmented" role="group" aria-label="EEG reference mode">
+            <button type="button" class="mode-button is-active" data-reference-mode="average" aria-pressed="true">Average</button>
+            <button type="button" class="mode-button" data-reference-mode="cz" aria-pressed="false">Cz</button>
+            <button type="button" class="mode-button" data-reference-mode="mastoids" aria-pressed="false">Mastoids</button>
+          </div>
+        </div>
+
+        <div class="control-block span-all">
+          <span class="control-label">Sources</span>
+          <div class="segmented two-up" role="group" aria-label="Source count mode">
+            <button type="button" class="mode-button is-active" data-source-mode="single" aria-pressed="true">Single</button>
+            <button type="button" class="mode-button" data-source-mode="many" aria-pressed="false">Many</button>
+          </div>
+        </div>
+
+        <button type="button" id="animationButton" class="toggle-button span-all" aria-pressed="false">Start oscillation</button>
+
+        <div class="legend" aria-label="Potential polarity legend">
+          <span><i class="swatch positive"></i>Positive</span>
+          <span><i class="swatch negative"></i>Negative</span>
+        </div>
+
+        <button type="button" id="resetButton" class="reset-button">Reset</button>
+      </section>
+    </main>
+
+    <script type="module" src="./src/field-sphere-demo.js"></script>
+  </body>
+</html>
